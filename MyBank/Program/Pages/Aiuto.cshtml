@@ -47,19 +47,18 @@
                     @{
                         if (Startup.adminSetup == false)
                         {
-                            <input type="email" class="form-control" name="email" id="Inputemail" aria-describedby="emailHelp"
+                            <input type="text" class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp"
                                    placeholder="Enter Email">
                         }
                         else
                         {
-                            <input type="email" readonly class="form-control" name="email" id="Inputemail" aria-describedby="emailHelp"
-                                   placeholder="@Program.readerEmail[Program.pnt]">
+                            <input type="text" readonly class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" placeholder="@Program.readerEmail[Program.pnt]">
                         }
                     }
                 </div>
                 <div class="form-group">
                     <label for="textArea">Descrivi il tuo problema</label>
-                    <textarea class="form-control" id="textArea" rows="3" placeholder="Indica il problema"></textarea>
+                    <textarea class="form-control" id="textArea" rows="3" name="problem" placeholder="Indica il problema"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Invia</button><br>
             </form>
@@ -71,8 +70,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    var email = document.getElementById("InputEmail").value;
-    //var prob = document.getElementById("textArea").value;
-</script>

@@ -15,13 +15,13 @@ namespace MyBank.Pages
         {
         }
 
-        public void OnPostLogin(string email, string passwd)
+        public void OnPostLogin(string name, string email, string passwd)
         {
             Program.Search(ref email, ref passwd);
             if (email == Program.readerEmail[Program.pnt] && passwd == Program.readerPass[Program.pnt])
             {
                 Startup.adminSetup = true;
-                Program.LeggiUtente();
+                Program.LeggiUtente(ref name);
             }
             else if (email != Program.readerEmail[Program.pnt])
             {

@@ -19,7 +19,7 @@ namespace MyBank
         public static string[] readerEmail = new string[row];
         public static string[] readerPass = new string[row];
         public static string[] readerData = new string[row];
-        public static string utente, email, passwd, error, IBAN, data, text, tipologia, codice, cc;
+        public static string utente, email, passwd, error, IBAN, data, text, tipologia, codice, cc, problema;
         public static bool exist = false;
 
         public static void Main(string[] args)
@@ -50,8 +50,16 @@ namespace MyBank
             }
         }
 
+        public static void CreateFile(ref string utente, ref string email, ref string passwd) //questa funzione crea il file dell'utente appena registrato
+        {
+            string data = $"Nome: {utente} \nEmail: {email} \nPassword: {passwd} \nNumero: * \nPIN: * \nCVV: * \nIBAN: * \nSaldo: * € \nEntrate: * € \nUscite: * €";
+            using (StreamWriter a = File.CreateText($"{MainPath}\\File\\Data\\Utenti\\{utente}.txt")) { }
+            File.AppendAllText(MainPath + $"\\File\\Data\\Utenti\\{utente}.txt", data);
+        }
+
         public static int Search(ref string email, ref string passwd) //questa funzione ricerca tra i file di testo e comunica se una mail e una passwd compaiono tra questi
         {
+            exist = false;
             for (int i = 0; i < readerEmail.Length; i++)
             {
                 if (email == readerEmail[i] && passwd == readerPass[i]) //se mail e password compaiono nei file
@@ -60,42 +68,59 @@ namespace MyBank
                     return pnt = i;
                 }
             }
-            return -1;
+            return 0;
         }
 
-        public static void LeggiUtente() //questa funzione legge i dati di ogni utente, quando esso si logga
+        public static void LeggiUtente(ref string utente) //questa funzione legge i dati di ogni utente, quando esso si logga
         {
-            readerData = File.ReadAllLines(MainPath + $"\\File\\Data\\admin.txt");
+            readerData = File.ReadAllLines(MainPath + $"\\File\\Data\\Utenti\\{utente}.txt");
+        }
+
+        public static void SalvaProblema() //questa funzione salva su file gi estremi dei bonifici
+        {
+            string str = $"\n{email}: {problema}";
+            File.AppendAllText(MainPath + "\\File\\Data\\Record\\aiuto.txt", str);
+            email = null; problema = null; 
         }
 
         public static void EffettuaBonifico() //questa funzione salva su file gi estremi dei bonifici
         {
             string str = $"\n{utente}, {IBAN}, {importo}, {data}, {text}";
-            File.AppendAllText(MainPath + "\\File\\Data\\bonifici.txt", str);
+            File.AppendAllText(MainPath + "\\File\\Data\\Record\\bonifici.txt", str);
             utente = null; IBAN = null; importo = 0; data = null; text = null;
         }
 
         public static void EffettuaBollettino() //questa funzione salva su file gi estremi dei bollettini
         {
             string str = $"\n{tipologia}, {codice}, {cc}, {importo}";
-            File.AppendAllText(MainPath + "\\File\\Data\\bollettini.txt", str);
+            File.AppendAllText(MainPath + "\\File\\Data\\Record\\bollettini.txt", str);
             tipologia = null; codice = null; cc = null; importo = 0;
         }
 
         public static void CambiaNome(ref string utente) //questa funzione consentirà di modificare il nome dei vari utenti nei file.txt
         {
             ReadFile();
-            File.WriteAllText(MainPath + "\\File\\Login\\name.txt", utente); //sovrascrivo il vecchio nome
+            readerName[pnt] = utente;
+            File.WriteAllText(MainPath + "\\File\\Login\\name.txt", null);
+            for (int i = 0; i < readerName.Length; i++)
+            {
+                File.AppendAllText(MainPath + "\\File\\Login\\name.txt", readerName[i]);
+                File.AppendAllText(MainPath + "\\File\\Login\\name.txt", "\n");
+            }
             ReadFile(); //rileggo il file
-            //manca da modificare il nome nel file {utente}.txt
         }
 
         public static void CambiaPasswd(ref string passwd) //questa funzione consentirà di  modificare la password dei vari utenti nei file.txt
         {
             ReadFile();
-            File.WriteAllText(MainPath + "\\File\\Login\\passwd.txt", passwd); //sovrascrivo la vecchia passwd
+            readerPass[pnt] = passwd;
+            File.WriteAllText(MainPath + "\\File\\Login\\passwd.txt", null);
+            for (int i = 0; i < readerPass.Length; i++)
+            {
+                File.AppendAllText(MainPath + "\\File\\Login\\passwd.txt", readerPass[i]);
+                File.AppendAllText(MainPath + "\\File\\Login\\passwd.txt", "\n");
+            }
             ReadFile(); //rileggo il file
-            //manca da modificare la passwd nel file {utente}.txt
         }
 
         public static void TogliSaldo() //questa funzione (ancora inutilizzata) consentirà di modificare il saldo dei vari utenti nei file.txt

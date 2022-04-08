@@ -24,6 +24,7 @@ namespace MyBank.Pages
                 Program.row++;
                 Program.WriteFile();
                 Program.ReadFile();
+                Program.CreateFile(ref name, ref email, ref passwd);
             }
             else
                 Program.error = "exist";

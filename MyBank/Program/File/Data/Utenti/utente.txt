@@ -1,0 +1,10 @@
+Nome: utente 
+Email: utente 
+Password: utente 
+Numero: * 
+PIN: * 
+CVV: * 
+IBAN: * 
+Saldo: * € 
+Entrate: * € 
+Uscite: * €

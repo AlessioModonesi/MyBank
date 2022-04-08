@@ -24,14 +24,14 @@
                 <form asp-page="/Profilo" asp-page-handler="nome" class="form-signin" method="post">
                     <div class="form-group">
                         <label for="utente">Indica un nuovo nome utente</label>
-                        <input type="text" class="form-control" id="InputUtente" placeholder="Nome utente" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="InputUtente" name="utente" placeholder="Nome utente" aria-describedby="basic-addon1">
                     </div>
                     <button type="submit" class="btn btn-primary">Cambia nome</button><br>
                 </form><br><br>
                 <form asp-page="/Profilo" asp-page-handler="passwd" class="form-signin" method="post">
                     <div class="form-group">
                         <label for="passwd">Indica una nuova password</label>
-                        <input type="text" class="form-control" id="InputPasswd" placeholder="Password" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id="InputPasswd" name="passwd" placeholder="Password" aria-describedby="basic-addon1">
                     </div>
                     <button type="submit" class="btn btn-primary">Cambia password</button><br>
                 </form>
@@ -39,8 +39,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    var utente = document.getElementById("InputUtente").value;
-    var passwd = document.getElementById("InputPasswd").value;
-</script>

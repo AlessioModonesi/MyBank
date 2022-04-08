@@ -15,7 +15,9 @@ namespace MyBank.Pages.Shared
 
         public void OnPost(string email, string prob)
         {
-            //Console.Writeline(prob);
+            Program.email = email;
+            Program.problema = prob;
+            Program.SalvaProblema();
         }
     }
 }
