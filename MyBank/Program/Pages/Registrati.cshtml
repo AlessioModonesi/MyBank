@@ -1,0 +1,95 @@
+﻿@page
+@model MyBank.Pages.RegistratiModel
+@{
+    ViewData["Title"] = "Registrati";
+}
+
+<div class="container" id="intestazione">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <br><h2>@ViewData["Title"]</h2><br>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <!--COLONNA DESTRA-->
+        <div class="d-none d-sm-none d-md-none d-xl-block col-xl-3 order-xl-0">
+            <div class="container" style="border-radius: 5px; margin-right: auto;">
+                <br>
+                Movimenti: per dare un occhio alle tue entrate e alle tue uscite recenti
+                <hr>
+                Bilancio: per avere una visione globale dell'andamento del tuo conto
+                <hr>
+                IBAN: per visualizzare le informazioni del tuo conto
+                <hr>
+                Bollettino: per pagare bollettini postali
+                <hr>
+                Bonifico: per effettuare bonifici verso altri clienti MyBank
+                <hr>
+                Ricarica: per ricaricare il saldo del tuo telefono
+                <hr>
+                Profilo: per gestire le tue informazioni personali
+                <hr>
+                Carta: per visualizzare le informazioni sulla tua carta MyBank
+                <hr>
+                Documenti: per caricare i tuoi file da scambiare con noi
+                <br><br>
+            </div>
+        </div>
+
+        <!--COLONNA CENTRALE-->
+        <div class="col-lg-12 col-xl-6 order-lg-0 order-xl-1" id="centrale">
+            @{
+                if (Startup.adminSetup == false)
+                {
+                    <br>
+                    <form asp-page="/Registrati" asp-page-handler="signup" class="form-signin" method="post">
+                        <div class="form-group">
+                            <label for="InputnName">Nome e cognome</label>
+                            <input type="text" class="form-control" name="name" id="InputName" aria-describedby="nameHelp" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputEmail">Indirizzo email</label>
+                            <input type="text" class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputPassword">Password</label>
+                            <input type="password" class="form-control" name="passwd" id="InputPasswd" placeholder="Enter Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="Adv()">Registrati</button><br>
+                    </form>
+                }
+                else
+                {
+                    <br>
+                    <form asp-page="/Registrati" asp-page-handler="signup" class="form-signin" method="post">
+                        <div class="form-group">
+                            <label for="InputnName">Nome e cognome</label>
+                            <input type="text" readonly class="form-control" name="name" id="InputName" aria-describedby="nameHelp" value="@Program.readerName[Program.pnt]">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputEmail">Indirizzo email</label>
+                            <input type="text" readonly class="form-control" name="email" id="InputEmail" aria-describedby="emailHelp" value="@Program.readerEmail[Program.pnt]">
+                        </div>
+                        <a href="/Login">Esci</a> per visualizzare i contenuti di questa pagina
+                    </form>
+                }
+            }
+        </div>
+
+        <!--COLONNA SINISTRA-->
+        <div class="d-none d-sm-none d-xl-block col-xl-3 order-xl-2">
+            <img src="~/images/superpubblicità.jpg" width="400" height="600" style="border-radius: 5px; margin-left: auto;">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var name = document.getElementById("InputName").value;
+    var email = document.getElementById("InputEmail").value;
+    var passwd = document.getElementById("InputPasswd").value;
+</script>
+
+

@@ -1,0 +1,113 @@
+﻿@page
+@model MyBank.Pages.LoginModel
+@{
+    if (Startup.adminSetup == false)
+        ViewData["Title"] = "Login";
+    else
+        ViewData["Title"] = "Esci";
+}
+
+<div class="container" id="intestazione">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <br><h2>@ViewData["Title"]</h2><br>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <!--COLONNA DESTRA-->
+        <div class="d-none d-sm-none d-md-none d-xl-block col-xl-3 order-xl-0">
+            <div class="container" style="border-radius: 5px; margin-right: auto;">
+                <br>
+                Movimenti: per dare un occhio alle tue entrate e alle tue uscite recenti
+                <hr>
+                Bilancio: per avere una visione globale dell'andamento del tuo conto
+                <hr>
+                IBAN: per visualizzare le informazioni del tuo conto
+                <hr>
+                Bollettino: per pagare bollettini postali
+                <hr>
+                Bonifico: per effettuare bonifici verso altri clienti MyBank
+                <hr>
+                Ricarica: per ricaricare il saldo del tuo telefono
+                <hr>
+                Profilo: per gestire le tue informazioni personali
+                <hr>
+                Carta: per visualizzare le informazioni sulla tua carta MyBank
+                <hr>
+                Documenti: per caricare i tuoi file da scambiare con noi
+                <br><br>
+            </div>
+        </div>
+
+        <!--COLONNA CENTRALE-->
+        <div class="col-lg-12 col-xl-6 order-lg-0 order-xl-1" id="centrale">
+            @{
+                if (Startup.adminSetup == false)
+                {
+                    <br>
+                    <form asp-page="/Login" asp-page-handler="login" class="form-signin" method="post">
+                        <div class="form-group">
+                            <label for="InputEmail">Indirizzo email</label>
+                            <input type="text" class="form-control" name="email" id="Inputemail" aria-describedby="emailHelp" placeholder="Enter Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputPassword">Password</label>
+                            <input type="password" class="form-control" name="passwd" id="Inputpasswd" placeholder="Enter Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="Adv()">Entra</button><br>
+                    </form>
+                }
+                else
+                {
+                    <br>
+                    <form asp-page="/Login" asp-page-handler="exit" class="form-signin" method="post">
+                        <div class="form-group">
+                            <label for="InputEmail">Indirizzo email</label>
+                            <input type="text" readonly class="form-control" name="email" id="Inputemail" aria-describedby="emailHelp" value="@Program.readerEmail[Program.pnt]">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputPassword">Password</label>
+                            <input type="password" readonly class="form-control" name="passwd" id="Inputpasswd" value="@Program.readerPass[Program.pnt]">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Esci</button><br>
+                    </form>
+                }
+            }
+        </div>
+
+        <!--COLONNA SINISTRA-->
+        <div class="d-none d-sm-none d-xl-block col-xl-3 order-xl-2">
+            <img src="~/images/superpubblicità.jpg" width="400" height="600" style="border-radius: 5px; margin-left: auto;">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var email = document.getElementById("InputEmail").value;
+    var passwd = document.getElementById("InputPasswd").value;
+</script>
+
+<script>
+    function Adv()
+    {
+        switch (@Program.error)
+        {
+            case "email":
+                alert("Indirizzo email errato");
+                break;
+            case "passwd":
+                alert("Password errata");
+                break;
+            case "exist":
+                alert("Utente già registrato");
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+
+

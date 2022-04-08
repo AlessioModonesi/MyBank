@@ -1,0 +1,37 @@
+﻿@page
+@model MyBank.Pages.IBANModel
+@{
+    ViewData["Title"] = "IBAN";
+}
+
+<!--Intestazione-->
+<div class="container" id="intestazione">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <br><h2>@ViewData["Title"]</h2><br>
+        </div>
+    </div>
+</div>
+
+<!--Centrale-->
+<div class="container" id="centrale">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <img src="~/images/IBANfoto.png" class="responsive" width="325" height="200" style="width: 100%; max-width: 325px; height: auto;">
+            <br><br>
+            <form class="form-signin">
+                <div class="form-group">
+                    <label for="OutputUtente">Utente</label>
+                    <input type="text" readonly class="form-control" value="@Program.readerData[0]" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group">
+                    <label for="OutputIBAN">IBAN</label>
+                    <input type="text" readonly class="form-control" value="@Program.readerData[6]" aria-describedby="basic-addon1">
+                </div>
+            </form>
+            <br><br><br><br><br>
+        </div>
+    </div>
+</div>

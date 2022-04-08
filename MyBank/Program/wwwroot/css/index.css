@@ -1,0 +1,36 @@
+@media screen and (max-width: 400px) { /* <=400 */
+
+}
+
+@media screen and (max-width: 575px) { /* XS */
+
+}
+
+@media screen and (min-width: 576px) { /* SM */
+
+}
+
+@media screen and (min-width: 768px) { /* MD */
+
+}
+
+@media screen and (min-width: 992px) { /* LG */
+
+}
+
+@media screen and (min-width: 1200px) { /* XL */
+
+}
+
+@media screen and (min-width: 1400px) { /* XXL */
+
+}
+
+#intestazione {
+    text-align: center;
+}
+
+#centrale {
+    text-align: center;
+}
+

@@ -1,0 +1,55 @@
+﻿@page
+@model MyBank.Pages.BilancioModel
+@{
+    ViewData["Title"] = "Bilancio";
+}
+
+<!--Intestazione-->
+<div class="container" id="intestazione">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <br><h2>@ViewData["Title"]</h2><br>
+        </div>
+    </div>
+</div>
+
+<!--Centrale-->
+<div class="container" id="centrale">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <img src="~/images/bilancione.png" class="responsive" width="150" height="150" style="width: 100%; max-width: 150px; height: auto;">
+            <br><br>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="d-none d-xl-block col-xl-5">
+            <img src="~/images/frecciarossa.png" class="responsive" width="200" height="200">
+            <br>
+        </div>
+        <div class="col-2"></div>
+        <div class="d-none d-xl-block col-xl-5">
+            <img src="~/images/frecciav.png" class="responsive" width="100" height="200">
+            <br><br>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <div class="alert alert-danger" role="alert">
+                @Program.readerData[9];
+            </div>
+            <br><br><br>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-5">
+            <div class="alert alert-success" role="alert">
+                @Program.readerData[8];
+            </div>
+            <br><br><br>
+        </div>
+    </div>
+</div>
+

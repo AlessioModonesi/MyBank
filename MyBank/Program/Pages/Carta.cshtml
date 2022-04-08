@@ -1,0 +1,45 @@
+﻿@page
+@model MyBank.Pages.CartaModel
+@{
+    ViewData["Title"] = "Carta";
+}
+
+<!--Intestazione-->
+<div class="container" id="intestazione">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <br><h2>@ViewData["Title"]</h2><br>
+        </div>
+    </div>
+</div>
+
+<!--Centrale-->
+<div class="container" id="centrale">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <img src="~/images/supercarta.png" class="responsive" width="325" height="200" style="width: 100%; max-width: 325px; height: auto;">
+            <br><br>
+            <form class="form-signin">
+                <div class="form-group">
+                    <label for="OutputUtente">Utente</label>
+                    <input type="text" readonly class="form-control" value="@Program.readerData[0]" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group">
+                    <label for="OutputNumero">Numero</label>
+                    <input type="text" readonly class="form-control" value="@Program.readerData[3]" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group">
+                    <label for="OutputPIN">PIN</label>
+                    <input type="text" readonly class="form-control" value="@Program.readerData[4]" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group">
+                    <label for="OutputCVV">CVV</label>
+                    <input type="text" readonly class="form-control" value="@Program.readerData[5]" aria-describedby="basic-addon1">
+                </div>
+            </form>
+            <br><br><br><br><br>
+        </div>
+    </div>
+</div>

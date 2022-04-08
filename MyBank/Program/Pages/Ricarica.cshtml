@@ -1,0 +1,42 @@
+﻿@page
+@model MyBank.Pages.RicaricaModel
+@{
+    ViewData["Title"] = "Ricarica";
+}
+
+<!--Intestazione-->
+<div class="container" id="intestazione">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <br><h3>@ViewData["Title"]</h3><br>
+        </div>
+    </div>
+</div>
+
+<!--Centrale-->
+<div class="container" id="centrale">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <img src="~/images/Fulmine.png" class="responsive" width="250" height="250" style="width: 100%; max-width: 250px; height: auto;">
+            <br><br>
+            <form asp-page="/Ricarica" asp-page-handler="ricarica" class="form-signin" method="post">
+                <div class="form-group">
+                    <label for="InputTelefono">Indica un numero di telefono</label>
+                    <input type="number" class="form-control" placeholder="Numero di telefono" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group">
+                    <label for="InputImporto">Quanti soldi vuoi ricaricare?</label>
+                    <input type="number" class="form-control" id="InputImporto" placeholder="Importo" aria-describedby="basic-addon1">
+                </div>
+                <button type="submit" class="btn btn-primary">Ricarica</button><br>
+            </form>
+            <br><br><br><br><br>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var importo = document.getElementById("InputImporto").value;
+</script>

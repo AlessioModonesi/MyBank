@@ -1,0 +1,42 @@
+﻿@page
+@model MyBank.Pages.MovimentiModel
+@{
+    ViewData["Title"] = "Movimenti";
+}
+
+<!--Intestazione-->
+<div class="container" id="intestazione">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <br><h2>@ViewData["Title"]</h2><br>
+        </div>
+    </div>
+</div>
+
+<!--Centrale-->
+<div class="container" id="centrale">
+    <div class="row justify-content-center">
+        <!--Colonna centrale-->
+        <div class="col-6">
+            <img src="~/images/movimentone.png" class="responsive" width="250" height="250" style="width: 100%; max-width: 250px; height: auto;">
+            <br><br>
+            @{
+                <p>Entrate recenti</p>
+                for (int i = 0; i < Program.nEntrate; i++)
+                {
+                    <div class="alert alert-success" role="alert">
+                        Hai ricevuto 10 euro da pippo
+                    </div>
+                }
+                <p>Uscite recenti</p>
+                for (int j = 0; j < Program.nUscite; j++)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Hai inviato 10 euro a pippo
+                    </div>
+                }
+            }<br><br><br><br><br>
+        </div>
+    </div>
+</div>
