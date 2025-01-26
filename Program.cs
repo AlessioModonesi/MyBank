@@ -52,7 +52,7 @@ namespace MyBank
 
         public static void CreateFile(ref string utente, ref string email, ref string passwd) //questa funzione crea il file dell'utente appena registrato
         {
-            string data = $"Nome: {utente} \nEmail: {email} \nPassword: {passwd} \nNumero: * \nPIN: * \nCVV: * \nIBAN: * \nSaldo: * € \nEntrate: * € \nUscite: * €";
+            string data = $"Nome: {utente} \nEmail: {email} \nPassword: {passwd} \nNumero: * \nPIN: * \nCVV: * \nIBAN: * \nSaldo: * ï¿½ \nEntrate: * ï¿½ \nUscite: * ï¿½";
             using (StreamWriter a = File.CreateText($"{MainPath}\\File\\Data\\Utenti\\{utente}.txt")) { }
             File.AppendAllText(MainPath + $"\\File\\Data\\Utenti\\{utente}.txt", data);
         }
@@ -80,7 +80,7 @@ namespace MyBank
         {
             string str = $"\n{email}: {problema}";
             File.AppendAllText(MainPath + "\\File\\Data\\Record\\aiuto.txt", str);
-            email = null; problema = null; 
+            email = null; problema = null;
         }
 
         public static void EffettuaBonifico() //questa funzione salva su file gi estremi dei bonifici
@@ -97,7 +97,7 @@ namespace MyBank
             tipologia = null; codice = null; cc = null; importo = 0;
         }
 
-        public static void CambiaNome(ref string utente) //questa funzione consentirà di modificare il nome dei vari utenti nei file.txt
+        public static void CambiaNome(ref string utente) //questa funzione consentirï¿½ di modificare il nome dei vari utenti nei file.txt
         {
             ReadFile();
             readerName[pnt] = utente;
@@ -110,7 +110,7 @@ namespace MyBank
             ReadFile(); //rileggo il file
         }
 
-        public static void CambiaPasswd(ref string passwd) //questa funzione consentirà di  modificare la password dei vari utenti nei file.txt
+        public static void CambiaPasswd(ref string passwd) //questa funzione consentirï¿½ di  modificare la password dei vari utenti nei file.txt
         {
             ReadFile();
             readerPass[pnt] = passwd;
@@ -123,12 +123,12 @@ namespace MyBank
             ReadFile(); //rileggo il file
         }
 
-        public static void TogliSaldo() //questa funzione (ancora inutilizzata) consentirà di modificare il saldo dei vari utenti nei file.txt
+        public static void TogliSaldo() //questa funzione (ancora inutilizzata) consentirï¿½ di modificare il saldo dei vari utenti nei file.txt
         {
 
         }
 
-        public static void AggiungiSaldo() //questa funzione (ancora inutilizzata) consentirà di modificare il saldo dei vari utenti nei file.txt
+        public static void AggiungiSaldo() //questa funzione (ancora inutilizzata) consentirï¿½ di modificare il saldo dei vari utenti nei file.txt
         {
 
         }
